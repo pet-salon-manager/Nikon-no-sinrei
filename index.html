@@ -3,72 +3,102 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080808">
-<title>日本心霊スポット図鑑 v3</title>
+<meta name="theme-color" content="#050505">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="心霊図鑑">
 <link rel="manifest" href="manifest.webmanifest">
+<title>日本心霊スポット図鑑 v4 本番版</title>
 <style>
-:root{--bg:#060606;--panel:#111;--panel2:#171717;--line:#332020;--red:#d8291d;--red2:#7d100b;--text:#f0ece8;--muted:#a69b96;--green:#3fa35a;--amber:#d18b2b}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#250a08 0,#080808 28%,#050505 70%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background:repeating-linear-gradient(0deg,transparent 0 3px,#fff 4px 4px)}
-.app{max-width:760px;margin:auto;min-height:100vh;padding-bottom:88px}
-header{padding:18px 16px 10px;position:sticky;top:0;z-index:50;background:linear-gradient(#080808ee,#080808d8);backdrop-filter:blur(12px);border-bottom:1px solid #2b1717}
-.brand{font-family:serif;font-size:28px;letter-spacing:.08em;text-shadow:0 0 18px #7b0c08}
-.sub{font-size:12px;color:#b4aaa5;margin-top:4px}.search{display:flex;gap:8px;margin-top:14px}.search input,.filters select,.memo textarea{width:100%;background:#171717;color:#fff;border:1px solid #332727;border-radius:12px;padding:12px;font-size:16px}
-.chips{display:flex;gap:8px;overflow:auto;padding:10px 0}.chip{white-space:nowrap;border:1px solid #3a3330;background:#111;color:#ddd;padding:7px 11px;border-radius:18px;font-size:13px}.chip.on{border-color:#a82118;color:#fff;background:#2a0b09}
-.hero{margin:0 16px 12px;border:1px solid #271919;border-radius:16px;overflow:hidden;background:#0b0b0b}
-.map{height:310px;position:relative;overflow:hidden;background:
-radial-gradient(ellipse at 50% 45%,#17201e 0,#0c1110 34%,#080909 68%,#050505 100%)}
-.map:before{content:"日本";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-font-family:serif;font-size:76px;letter-spacing:.35em;color:#ffffff0d;transform:rotate(-10deg)}
-.jp-shape{position:absolute;left:15%;top:9%;width:70%;height:82%;opacity:.38;filter:drop-shadow(0 0 18px #300)}
-.jp-line{position:absolute;background:#5d5d5d;border-radius:999px;transform-origin:center}
-.pin{position:absolute;width:12px;height:12px;border-radius:50%;background:#ed2d20;border:2px solid #ffd0cc;
-box-shadow:0 0 7px #ff2b1d,0 0 16px #9f0d08;transform:translate(-50%,-50%);z-index:5}
-.pin:after{content:"";position:absolute;left:3px;top:9px;width:2px;height:7px;background:#e42b1f}
-.you-pin{position:absolute;width:18px;height:18px;border-radius:50%;border:3px solid #fff;background:#df291e;
-box-shadow:0 0 0 7px #df291e33,0 0 14px #fff8;transform:translate(-50%,-50%);z-index:8}
-.mapLabel{position:absolute;left:12px;top:12px;z-index:9;background:#080808cc;border:1px solid #4c2927;
-border-radius:10px;padding:7px 9px;font-size:12px;color:#ddd}
-.mapOverlay{padding:10px 12px;font-size:12px;color:#c2b8b2;background:#0b0b0b}
-.section{padding:4px 16px 12px}.section h2{font-size:18px;font-family:serif;margin:10px 0}.filters{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cards{display:grid;gap:10px}
-.card{background:linear-gradient(180deg,#141414,#0d0d0d);border:1px solid #312323;border-radius:14px;padding:12px}.row{display:flex;justify-content:space-between;gap:10px}.title{font-size:17px;font-family:serif}.meta{font-size:12px;color:var(--muted);margin-top:4px}.desc{font-size:13px;color:#d0c8c3;line-height:1.6;margin:10px 0}
-.badge{display:inline-block;border:1px solid #6d211b;color:#ff695f;border-radius:6px;padding:4px 7px;font-size:11px}.badge.green{border-color:#28653a;color:#69d27f}.badge.amber{border-color:#7b5119;color:#e6aa55}
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.btn{border:1px solid #3f2b2b;background:#151515;color:#eee;border-radius:10px;padding:10px;font-size:14px}.btn.on{background:#61120d;border-color:#9d2118}.btn.visit.on{background:#123e20;border-color:#2d7f45}
-.danger{color:#e3362a;letter-spacing:2px}.note{font-size:12px;color:#998d86}.empty{padding:24px;text-align:center;color:#9d918b;border:1px dashed #3a2c28;border-radius:12px}
-nav{position:fixed;left:0;right:0;bottom:0;z-index:80;background:#090909ee;border-top:1px solid #322222;backdrop-filter:blur(12px)}.navin{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom)}
+:root{--bg:#050505;--panel:#101010;--panel2:#161313;--line:#3a2220;--red:#e12c20;--red2:#7a0e09;--text:#f2ece8;--muted:#a99e98;--green:#4fb668;--amber:#db922a}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:#050505;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}
+body{background:
+radial-gradient(circle at 50% -12%,#2a0907 0,#0a0808 28%,#050505 65%),
+repeating-linear-gradient(0deg,#ffffff04 0 1px,transparent 1px 4px)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 35%,transparent 0 35%,#0008 72%,#000 100%);z-index:1000}
+.app{max-width:760px;margin:auto;min-height:100vh;padding-bottom:90px;position:relative;z-index:1}
+header{padding:20px 16px 10px;position:sticky;top:0;z-index:50;background:linear-gradient(#080808f5,#080808e5);backdrop-filter:blur(14px);border-bottom:1px solid #371c19}
+.brand{font-family:serif;font-size:29px;letter-spacing:.08em;text-shadow:0 0 18px #8a0e08,0 0 2px #fff}
+.sub{font-size:12px;color:#b4aaa5;margin-top:5px}.version{color:#e65348}
+.search{margin-top:14px;display:flex;gap:8px}
+.search input,.filters select,.memo textarea{width:100%;background:#151414;color:#fff;border:1px solid #3d2c29;border-radius:13px;padding:12px;font-size:16px}
+.chips{display:flex;gap:8px;overflow:auto;padding:11px 0 2px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;border:1px solid #423533;background:#101010;color:#ddd;padding:8px 12px;border-radius:20px;font-size:13px}.chip.on{border-color:#a82017;color:#fff;background:#2b0c09;box-shadow:0 0 12px #8c0d0844}
+.topstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 16px}
+.stat{background:#101010;border:1px solid #382625;border-radius:13px;padding:10px;text-align:center}.stat span{font-size:12px;color:#a99f9a}.stat b{display:block;font-size:22px;margin-top:3px}
+.hero{margin:0 16px 12px;border:1px solid #3a201e;border-radius:17px;overflow:hidden;background:#080808}
+.map{height:330px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 52% 44%,#17201e 0,#0c1110 36%,#080909 67%,#040404 100%)}
+.map:before{content:"日本";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:serif;font-size:78px;letter-spacing:.35em;color:#ffffff0b;transform:rotate(-10deg)}
+.map:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,transparent 0 44%,#0008 78%,#000 100%);pointer-events:none}
+.mapLabel{position:absolute;left:12px;top:12px;z-index:9;background:#080808d9;border:1px solid #542824;border-radius:11px;padding:8px 10px;font-size:12px}
+.mapControls{position:absolute;right:12px;top:12px;z-index:10;display:grid;gap:8px}
+.mapBtn{border:1px solid #6b2b25;background:#0d0d0ddd;color:#fff;border-radius:12px;padding:9px 10px;font-size:12px}
+.pin{position:absolute;width:12px;height:12px;border-radius:50%;background:#ee3125;border:2px solid #ffd7d3;box-shadow:0 0 8px #ff2b1d,0 0 18px #a30d08;transform:translate(-50%,-50%);z-index:5;border:none}
+.pin:after{content:"";position:absolute;left:5px;top:10px;width:2px;height:8px;background:#e43127}
+.you-pin{position:absolute;width:18px;height:18px;border-radius:50%;border:3px solid #fff;background:#e42e23;box-shadow:0 0 0 7px #e42e2333,0 0 14px #fff8;transform:translate(-50%,-50%);z-index:8}
+.mapOverlay{padding:10px 12px;font-size:12px;color:#c4bab4;border-top:1px solid #2d1c1b}
+.warning{margin:12px 16px;padding:12px;border-left:4px solid #b3231a;background:#1b0c0b;color:#ead7d1;font-size:13px;line-height:1.55}
+.section{padding:4px 16px 14px}.section h2{font-size:19px;font-family:serif;margin:12px 0}.filters{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cards{display:grid;gap:10px}
+.card{background:linear-gradient(180deg,#141313,#0c0c0c);border:1px solid #392624;border-radius:15px;padding:12px;position:relative;overflow:hidden}
+.card:before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent,#7e0d0711,transparent);pointer-events:none}
+.row{display:flex;justify-content:space-between;gap:10px}.title{font-size:17px;font-family:serif}.meta{font-size:12px;color:var(--muted);margin-top:4px}
+.desc{font-size:13px;color:#d0c8c3;line-height:1.65;margin:10px 0}
+.badge{display:inline-block;border:1px solid #75241e;color:#ff6a60;border-radius:6px;padding:4px 7px;font-size:11px}.badge.green{border-color:#28653a;color:#6ddd82}.badge.amber{border-color:#795015;color:#e9ad58}
+.danger{color:#e63d31;letter-spacing:2px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn{border:1px solid #4a3030;background:#151414;color:#eee;border-radius:11px;padding:10px;font-size:14px}.btn.on{background:#65130e;border-color:#a72b21}.btn.visit.on{background:#123e20;border-color:#2d7f45}
+.empty{padding:24px;text-align:center;color:#9d918b;border:1px dashed #3a2c28;border-radius:12px}
+.detail{display:none;padding:0 16px 22px}.detail.show{display:block}
+.detailHero{height:250px;border-radius:17px;background:radial-gradient(circle at 48% 42%,#1c2d28,#0a0c0b 50%,#040404);border:1px solid #3d2320;display:flex;align-items:center;justify-content:center;font-size:68px;position:relative;overflow:hidden}
+.detailHero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 9%,#ffffff05 10% 11%,transparent 12% 19%)}
+.detailHero:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,#040404da)}
+.detailHero span{z-index:1;filter:drop-shadow(0 0 18px #a20e08)}.detail h1{font-family:serif;font-size:28px;margin:14px 0 4px}
+.memo textarea{min-height:100px;margin-top:8px}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.ph{aspect-ratio:1.2;border:1px solid #392624;border-radius:11px;background:radial-gradient(circle at 30% 30%,#1e2924,#0a0b0a 50%,#050505);display:flex;align-items:center;justify-content:center;font-size:28px;filter:grayscale(.4)}
+.infoGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.infoBox{background:#101010;border:1px solid #30201f;border-radius:12px;padding:10px}.infoBox b{display:block;margin-bottom:4px}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:80;background:#090909ee;border-top:1px solid #382523;backdrop-filter:blur(14px)}
+.navin{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom)}
 nav button{background:none;border:0;color:#8f8782;padding:10px 2px;font-size:11px}nav button.active{color:#ef3b2e}.icon{display:block;font-size:20px;margin-bottom:2px}
-.topstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 16px}.stat{background:#111;border:1px solid #2d2020;border-radius:12px;padding:10px;text-align:center}.stat b{display:block;font-size:20px;color:#f4e8e3}
-.detail{display:none;padding:0 16px 20px}.detail.show{display:block}.detailHero{height:230px;border-radius:16px;background:radial-gradient(circle at center,#1e2925,#080b0a 55%,#050505);border:1px solid #332222;display:flex;align-items:center;justify-content:center;font-size:64px;position:relative;overflow:hidden}.detailHero:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,#050505c9)}.detailHero span{z-index:1;filter:drop-shadow(0 0 18px #8b0e09)}
-.detail h1{font-family:serif;font-size:27px;margin:14px 0 4px}.memo textarea{min-height:90px;margin-top:8px}.warning{margin:12px 16px;padding:12px;border-left:4px solid #a82018;background:#190b0a;color:#e8d5cf;font-size:13px;line-height:1.5}
-@media(max-width:420px){.map{height:270px}.brand{font-size:24px}.filters{grid-template-columns:1fr}}
+.settingsBox{background:#101010;border:1px solid #342221;border-radius:14px;padding:13px;margin-bottom:10px}
+.settingsBox h3{margin:0 0 8px;font-family:serif}.ghostflash{position:fixed;inset:0;pointer-events:none;z-index:999;opacity:0;background:radial-gradient(circle,#ffffff18,#7a000022 35%,#0000 70%)}
+.ghostflash.on{animation:flash .45s ease}@keyframes flash{0%{opacity:0}45%{opacity:.9}100%{opacity:0}}
+@media(max-width:420px){.brand{font-size:24px}.map{height:300px}.filters,.infoGrid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<div class="ghostflash" id="ghostflash"></div>
 <div class="app">
 <header>
   <div class="brand">日本心霊スポット図鑑</div>
-  <div class="sub">全国47都道府県を検索対象にした、怖くて実用的なフィールドガイド ・ v3</div>
+  <div class="sub">全国47都道府県対応・怖くて実用的なフィールドガイド <span class="version">v4 本番版</span></div>
   <div class="search"><input id="q" placeholder="スポット名・都道府県・メモを検索"></div>
   <div class="chips" id="chips"></div>
 </header>
 
 <div id="homeView">
   <div class="topstats">
-    <div class="stat"><span class="note">掲載</span><b id="spotCount">0</b></div>
-    <div class="stat"><span class="note">行きたい</span><b id="favCount">0</b></div>
-    <div class="stat"><span class="note">訪問済み</span><b id="visitCount">0</b></div>
+    <div class="stat"><span>掲載</span><b id="spotCount">0</b></div>
+    <div class="stat"><span>行きたい</span><b id="favCount">0</b></div>
+    <div class="stat"><span>訪問済み</span><b id="visitCount">0</b></div>
   </div>
+
   <div class="hero">
-    <div id="map" class="map"></div>
-    <div class="mapOverlay">📍 HTTPS環境では「現在地」を使い、近い順・直線距離・概算移動時間を表示します。</div>
+    <div id="map" class="map">
+      <div class="mapLabel">🗾 心霊スポット分布</div>
+      <div class="mapControls"><button class="mapBtn" id="locBtn">◎ 現在地</button><button class="mapBtn" id="randomBtn">☠ ランダム</button></div>
+      <div id="pinLayer"></div>
+    </div>
+    <div class="mapOverlay">📍 現在地を許可すると、近い順・直線距離・概算移動時間を表示します。</div>
   </div>
-  <div class="warning">⚠️ 私有地・閉鎖施設・線路・立入禁止区域には入らないでください。アプリは侵入を促すルートを案内しません。</div>
+
+  <div class="warning">⚠️ 私有地・閉鎖施設・線路・立入禁止区域には入らないでください。心霊情報は噂や体験談を含み、史実とは分けて楽しむ設計です。</div>
+
   <div class="section"><h2>現在地から近いスポット</h2><div id="nearby" class="cards"></div></div>
 </div>
 
 <div id="searchView" style="display:none">
   <div class="section">
-    <h2>全国データ検索</h2>
+    <h2 id="listTitle">全国データ検索</h2>
     <div class="filters">
       <select id="pref"></select>
       <select id="cat"></select>
@@ -90,21 +120,21 @@ nav button{background:none;border:0;color:#8f8782;padding:10px 2px;font-size:11p
 <button data-tab="settings"><span class="icon">⚙</span>設定</button>
 </div></nav>
 </div>
+
 <script>
-const PREFS = ["北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"];
-const SPOTS = [{"id": "s01", "name": "常紋トンネル周辺", "pref": "北海道", "cat": "トンネル", "lat": 43.776, "lng": 143.508, "status": "外観・周辺のみ", "risk": 4, "desc": "鉄道史と怪談で知られる地域。線路・鉄道施設には立ち入らないでください。"}, {"id": "s02", "name": "恐山", "pref": "青森県", "cat": "寺社・霊場", "lat": 41.326, "lng": 141.09, "status": "公開見学可", "risk": 3, "desc": "日本三大霊場の一つとして知られる場所。開山期間・参拝ルールに従ってください。"}, {"id": "s03", "name": "松尾鉱山跡周辺", "pref": "岩手県", "cat": "鉱山・廃墟", "lat": 39.965, "lng": 140.914, "status": "外観のみ", "risk": 4, "desc": "旧鉱山集落の遺構で知られるエリア。建物内部や封鎖区域には入らないでください。"}, {"id": "s04", "name": "八木山橋周辺", "pref": "宮城県", "cat": "橋・道路", "lat": 38.257, "lng": 140.83, "status": "公道から", "risk": 3, "desc": "怪談で名前が挙がることのある橋。交通の妨げにならないよう注意してください。"}, {"id": "s05", "name": "千秋公園周辺", "pref": "秋田県", "cat": "公園・史跡", "lat": 39.721, "lng": 140.124, "status": "公開見学可", "risk": 2, "desc": "久保田城跡の公園。夜間は足元や周辺利用者に十分配慮してください。"}, {"id": "s06", "name": "滝不動周辺", "pref": "山形県", "cat": "寺社・霊場", "lat": 38.25, "lng": 140.34, "status": "公開範囲のみ", "risk": 3, "desc": "地域の伝承が語られることのある場所。現地の案内と立入表示を優先してください。"}, {"id": "s07", "name": "旧三森トンネル周辺", "pref": "福島県", "cat": "トンネル", "lat": 37.39, "lng": 140.22, "status": "通行状況要確認", "risk": 4, "desc": "旧道・隧道として語られる場所。閉鎖・規制がある場合は絶対に進入しないでください。"}, {"id": "s08", "name": "袋田の滝周辺", "pref": "茨城県", "cat": "自然・滝", "lat": 36.768, "lng": 140.406, "status": "公開見学可", "risk": 2, "desc": "観光地として有名な滝周辺。遊歩道から外れず安全第一で見学してください。"}, {"id": "s09", "name": "華厳の滝周辺", "pref": "栃木県", "cat": "自然・滝", "lat": 36.738, "lng": 139.503, "status": "公開見学可", "risk": 3, "desc": "歴史的逸話でも知られる観光地。展望区域・遊歩道内で見学してください。"}, {"id": "s10", "name": "薗原ダム周辺", "pref": "群馬県", "cat": "ダム・湖", "lat": 36.652, "lng": 139.151, "status": "公道・公開部のみ", "risk": 3, "desc": "ダム周辺の怪談が語られることがあります。管理区域には入らないでください。"}, {"id": "s11", "name": "旧吹上トンネル周辺", "pref": "東京都", "cat": "トンネル", "lat": 35.805, "lng": 139.259, "status": "立入規制に従う", "risk": 5, "desc": "青梅方面の旧道トンネルとして有名。封鎖・立入禁止箇所への侵入はしないでください。"}, {"id": "s12", "name": "八王子城跡", "pref": "東京都", "cat": "城跡・史跡", "lat": 35.653, "lng": 139.255, "status": "公開見学可", "risk": 4, "desc": "戦国史の史跡として知られる場所。公開時間や登山道の案内に従ってください。"}, {"id": "s13", "name": "小坪トンネル周辺", "pref": "神奈川県", "cat": "トンネル", "lat": 35.295, "lng": 139.568, "status": "公道から", "risk": 4, "desc": "逗子・鎌倉周辺で怪談が語られることのある道路。駐停車や徒歩移動は交通安全を優先してください。"}, {"id": "s14", "name": "青木ヶ原樹海・遊歩道", "pref": "山梨県", "cat": "森林・自然", "lat": 35.475, "lng": 138.646, "status": "遊歩道のみ", "risk": 5, "desc": "富士山麓の森林。指定遊歩道から外れず、単独で無理な行動をしないでください。"}, {"id": "s15", "name": "旧天城トンネル", "pref": "静岡県", "cat": "トンネル", "lat": 34.825, "lng": 138.934, "status": "公開状況要確認", "risk": 3, "desc": "歴史ある石造トンネル。通行止め・工事情報がある場合は現地表示を優先してください。"}, {"id": "s16", "name": "深泥池", "pref": "京都府", "cat": "池・自然", "lat": 35.062, "lng": 135.768, "status": "公共エリアのみ", "risk": 3, "desc": "古くから伝承が語られる池。自然保護区域のルールに従ってください。"}, {"id": "s17", "name": "旧生駒トンネル周辺", "pref": "大阪府", "cat": "トンネル", "lat": 34.674, "lng": 135.651, "status": "鉄道施設立入禁止", "risk": 5, "desc": "旧鉄道トンネルにまつわる話で知られる地域。鉄道用地には入らないでください。"}, {"id": "s18", "name": "一庫ダム周辺", "pref": "兵庫県", "cat": "ダム・湖", "lat": 34.918, "lng": 135.414, "status": "公開部のみ", "risk": 3, "desc": "ダム周辺の噂が語られることがあります。管理区域・夜間閉鎖区域に注意してください。"}, {"id": "s19", "name": "暗峠周辺", "pref": "奈良県", "cat": "峠・道路", "lat": 34.664, "lng": 135.659, "status": "公道から", "risk": 3, "desc": "歴史ある峠道。非常に急な区間があるため、心霊目的に限らず交通安全を優先してください。"}, {"id": "s20", "name": "犬鳴峠周辺", "pref": "福岡県", "cat": "峠・道路", "lat": 33.683, "lng": 130.56, "status": "立入禁止区域あり", "risk": 5, "desc": "全国的に怪談で知られる峠周辺。旧道や封鎖箇所へ侵入しないでください。"}, {"id": "s21", "name": "七つ釜周辺", "pref": "佐賀県", "cat": "海岸・自然", "lat": 33.55, "lng": 129.872, "status": "公開見学可", "risk": 2, "desc": "玄界灘の景勝地。崖や波打ち際では安全柵・遊歩道を守ってください。"}, {"id": "s22", "name": "軍艦島（端島）", "pref": "長崎県", "cat": "産業遺産", "lat": 32.627, "lng": 129.739, "status": "公式ツアーのみ", "risk": 4, "desc": "世界遺産の島。上陸は許可されたツアー・見学区域に限られます。"}, {"id": "s23", "name": "阿蘇・草千里周辺", "pref": "熊本県", "cat": "自然・火山", "lat": 32.885, "lng": 131.052, "status": "公開見学可", "risk": 3, "desc": "火山地域。火山規制や気象情報を確認し、立入規制に従ってください。"}, {"id": "s24", "name": "別府・地獄地帯周辺", "pref": "大分県", "cat": "温泉・自然", "lat": 33.316, "lng": 131.472, "status": "公開見学可", "risk": 2, "desc": "温泉地として有名。立入禁止の噴気地帯には入らないでください。"}, {"id": "s25", "name": "青島周辺", "pref": "宮崎県", "cat": "島・自然", "lat": 31.802, "lng": 131.476, "status": "公開見学可", "risk": 2, "desc": "観光地として知られる島。夜間の海岸歩行は足元に注意してください。"}, {"id": "s26", "name": "開聞岳周辺", "pref": "鹿児島県", "cat": "山・自然", "lat": 31.18, "lng": 130.528, "status": "登山道のみ", "risk": 3, "desc": "薩摩富士として知られる山。登山道・天候・装備の確認を優先してください。"}, {"id": "s27", "name": "ひめゆりの塔周辺", "pref": "沖縄県", "cat": "史跡", "lat": 26.131, "lng": 127.69, "status": "公開見学可", "risk": 4, "desc": "戦争の記憶を伝える場所。慰霊の場として節度ある見学をしてください。"}];
-const cats=[...new Set(SPOTS.map(x=>x.cat))];
+const PREFS=["北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"];
+const SPOTS=[{"id": "s01", "name": "常紋トンネル周辺", "pref": "北海道", "cat": "トンネル", "lat": 43.776, "lng": 143.508, "status": "外観・周辺のみ", "risk": 4, "desc": "北海道で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "常紋トンネル周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s02", "name": "恐山", "pref": "青森県", "cat": "寺社・霊場", "lat": 41.326, "lng": 141.09, "status": "公開見学可", "risk": 4, "desc": "青森県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "恐山には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s03", "name": "松尾鉱山跡周辺", "pref": "岩手県", "cat": "鉱山・廃墟", "lat": 39.965, "lng": 140.914, "status": "外観のみ", "risk": 4, "desc": "岩手県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "松尾鉱山跡周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s04", "name": "八木山橋周辺", "pref": "宮城県", "cat": "橋・道路", "lat": 38.257, "lng": 140.83, "status": "公道から", "risk": 3, "desc": "宮城県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "八木山橋周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s05", "name": "千秋公園周辺", "pref": "秋田県", "cat": "公園・史跡", "lat": 39.721, "lng": 140.124, "status": "公開見学可", "risk": 2, "desc": "秋田県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "千秋公園周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s06", "name": "滝不動周辺", "pref": "山形県", "cat": "寺社・霊場", "lat": 38.25, "lng": 140.34, "status": "公開範囲のみ", "risk": 3, "desc": "山形県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "滝不動周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s07", "name": "旧三森トンネル周辺", "pref": "福島県", "cat": "トンネル", "lat": 37.39, "lng": 140.22, "status": "規制状況要確認", "risk": 4, "desc": "福島県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "旧三森トンネル周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s08", "name": "袋田の滝周辺", "pref": "茨城県", "cat": "自然・滝", "lat": 36.768, "lng": 140.406, "status": "公開見学可", "risk": 2, "desc": "茨城県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "袋田の滝周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s09", "name": "華厳の滝周辺", "pref": "栃木県", "cat": "自然・滝", "lat": 36.738, "lng": 139.503, "status": "公開見学可", "risk": 3, "desc": "栃木県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "華厳の滝周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s10", "name": "薗原ダム周辺", "pref": "群馬県", "cat": "ダム・湖", "lat": 36.652, "lng": 139.151, "status": "公開部のみ", "risk": 3, "desc": "群馬県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "薗原ダム周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s11", "name": "正丸峠周辺", "pref": "埼玉県", "cat": "峠・道路", "lat": 35.939, "lng": 139.178, "status": "公道から", "risk": 3, "desc": "埼玉県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "正丸峠周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s12", "name": "雄蛇ヶ池周辺", "pref": "千葉県", "cat": "池・自然", "lat": 35.57, "lng": 140.361, "status": "公開範囲のみ", "risk": 3, "desc": "千葉県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "雄蛇ヶ池周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s13", "name": "旧吹上トンネル周辺", "pref": "東京都", "cat": "トンネル", "lat": 35.805, "lng": 139.259, "status": "立入規制に従う", "risk": 5, "desc": "東京都で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "旧吹上トンネル周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s14", "name": "小坪トンネル周辺", "pref": "神奈川県", "cat": "トンネル", "lat": 35.295, "lng": 139.568, "status": "公道から", "risk": 4, "desc": "神奈川県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "小坪トンネル周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s15", "name": "弥彦山周辺", "pref": "新潟県", "cat": "山・自然", "lat": 37.704, "lng": 138.809, "status": "公開範囲のみ", "risk": 3, "desc": "新潟県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "弥彦山周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s16", "name": "旧北陸道・倶利伽羅周辺", "pref": "富山県", "cat": "峠・史跡", "lat": 36.675, "lng": 136.798, "status": "公開範囲のみ", "risk": 3, "desc": "富山県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "旧北陸道・倶利伽羅周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s17", "name": "ヤセの断崖周辺", "pref": "石川県", "cat": "海岸・自然", "lat": 37.157, "lng": 136.675, "status": "公開見学可", "risk": 3, "desc": "石川県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "ヤセの断崖周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s18", "name": "東尋坊周辺", "pref": "福井県", "cat": "海岸・自然", "lat": 36.237, "lng": 136.126, "status": "公開見学可", "risk": 4, "desc": "福井県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "東尋坊周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s19", "name": "青木ヶ原樹海・遊歩道", "pref": "山梨県", "cat": "森林・自然", "lat": 35.475, "lng": 138.646, "status": "遊歩道のみ", "risk": 5, "desc": "山梨県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "青木ヶ原樹海・遊歩道には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s20", "name": "姨捨周辺", "pref": "長野県", "cat": "峠・伝承", "lat": 36.493, "lng": 138.093, "status": "公開範囲のみ", "risk": 3, "desc": "長野県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "姨捨周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s21", "name": "天心白菊の塔周辺", "pref": "岐阜県", "cat": "史跡", "lat": 35.414, "lng": 136.758, "status": "公開見学可", "risk": 3, "desc": "岐阜県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "天心白菊の塔周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s22", "name": "旧天城トンネル", "pref": "静岡県", "cat": "トンネル", "lat": 34.825, "lng": 138.934, "status": "公開状況要確認", "risk": 4, "desc": "静岡県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "旧天城トンネルには地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s23", "name": "伊勢神トンネル周辺", "pref": "愛知県", "cat": "トンネル", "lat": 35.097, "lng": 137.288, "status": "公道から", "risk": 4, "desc": "愛知県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "伊勢神トンネル周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s24", "name": "青山峠周辺", "pref": "三重県", "cat": "峠・道路", "lat": 34.676, "lng": 136.284, "status": "公道から", "risk": 3, "desc": "三重県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "青山峠周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s25", "name": "余呉湖周辺", "pref": "滋賀県", "cat": "湖・伝承", "lat": 35.528, "lng": 136.199, "status": "公開見学可", "risk": 3, "desc": "滋賀県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "余呉湖周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s26", "name": "深泥池", "pref": "京都府", "cat": "池・自然", "lat": 35.062, "lng": 135.768, "status": "公共エリアのみ", "risk": 4, "desc": "京都府で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "深泥池には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s27", "name": "旧生駒トンネル周辺", "pref": "大阪府", "cat": "トンネル", "lat": 34.674, "lng": 135.651, "status": "鉄道施設立入禁止", "risk": 5, "desc": "大阪府で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "旧生駒トンネル周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s28", "name": "一庫ダム周辺", "pref": "兵庫県", "cat": "ダム・湖", "lat": 34.918, "lng": 135.414, "status": "公開部のみ", "risk": 3, "desc": "兵庫県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "一庫ダム周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s29", "name": "暗峠周辺", "pref": "奈良県", "cat": "峠・道路", "lat": 34.664, "lng": 135.659, "status": "公道から", "risk": 3, "desc": "奈良県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "暗峠周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s30", "name": "淡嶋神社周辺", "pref": "和歌山県", "cat": "寺社・伝承", "lat": 34.275, "lng": 135.073, "status": "公開範囲のみ", "risk": 4, "desc": "和歌山県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "淡嶋神社周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s31", "name": "多鯰ヶ池周辺", "pref": "鳥取県", "cat": "池・伝承", "lat": 35.543, "lng": 134.209, "status": "公開見学可", "risk": 3, "desc": "鳥取県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "多鯰ヶ池周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s32", "name": "黄泉比良坂", "pref": "島根県", "cat": "神話・史跡", "lat": 35.443, "lng": 133.103, "status": "公開見学可", "risk": 4, "desc": "島根県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "黄泉比良坂には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s33", "name": "育霊神社周辺", "pref": "岡山県", "cat": "寺社・伝承", "lat": 34.662, "lng": 133.934, "status": "公開範囲のみ", "risk": 3, "desc": "岡山県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "育霊神社周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s34", "name": "己斐峠周辺", "pref": "広島県", "cat": "峠・道路", "lat": 34.404, "lng": 132.405, "status": "公道から", "risk": 3, "desc": "広島県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "己斐峠周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s35", "name": "壇ノ浦周辺", "pref": "山口県", "cat": "史跡・海岸", "lat": 33.97, "lng": 130.958, "status": "公開見学可", "risk": 3, "desc": "山口県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "壇ノ浦周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s36", "name": "祖谷渓周辺", "pref": "徳島県", "cat": "渓谷・伝承", "lat": 33.876, "lng": 133.838, "status": "公開範囲のみ", "risk": 3, "desc": "徳島県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "祖谷渓周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s37", "name": "屋島周辺", "pref": "香川県", "cat": "山・史跡", "lat": 34.357, "lng": 134.103, "status": "公開見学可", "risk": 3, "desc": "香川県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "屋島周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s38", "name": "三坂峠周辺", "pref": "愛媛県", "cat": "峠・道路", "lat": 33.7, "lng": 132.8, "status": "公道から", "risk": 3, "desc": "愛媛県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "三坂峠周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s39", "name": "見返り橋周辺", "pref": "高知県", "cat": "橋・道路", "lat": 33.559, "lng": 133.531, "status": "公道から", "risk": 3, "desc": "高知県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "見返り橋周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s40", "name": "犬鳴峠周辺", "pref": "福岡県", "cat": "峠・道路", "lat": 33.683, "lng": 130.56, "status": "立入禁止区域あり", "risk": 5, "desc": "福岡県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "犬鳴峠周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s41", "name": "七つ釜周辺", "pref": "佐賀県", "cat": "海岸・自然", "lat": 33.55, "lng": 129.872, "status": "公開見学可", "risk": 2, "desc": "佐賀県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "七つ釜周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s42", "name": "軍艦島（端島）", "pref": "長崎県", "cat": "産業遺産", "lat": 32.627, "lng": 129.739, "status": "公式ツアーのみ", "risk": 4, "desc": "長崎県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "軍艦島（端島）には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s43", "name": "阿蘇・草千里周辺", "pref": "熊本県", "cat": "自然・火山", "lat": 32.885, "lng": 131.052, "status": "公開見学可", "risk": 3, "desc": "熊本県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "阿蘇・草千里周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s44", "name": "別府・地獄地帯周辺", "pref": "大分県", "cat": "温泉・自然", "lat": 33.316, "lng": 131.472, "status": "公開見学可", "risk": 3, "desc": "大分県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "別府・地獄地帯周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s45", "name": "高千穂峡周辺", "pref": "宮崎県", "cat": "渓谷・伝承", "lat": 32.711, "lng": 131.306, "status": "公開見学可", "risk": 3, "desc": "宮崎県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "高千穂峡周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s46", "name": "開聞岳周辺", "pref": "鹿児島県", "cat": "山・自然", "lat": 31.18, "lng": 130.528, "status": "登山道のみ", "risk": 3, "desc": "鹿児島県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "開聞岳周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}, {"id": "s47", "name": "ひめゆりの塔周辺", "pref": "沖縄県", "cat": "史跡", "lat": 26.131, "lng": 127.69, "status": "公開見学可", "risk": 4, "desc": "沖縄県で怪談・伝承・歴史的な逸話とともに語られることのある場所。現地の案内・公開範囲・安全ルールを最優先してください。", "history": "ひめゆりの塔周辺には地域の歴史や伝承に結びついた話が残っています。心霊情報は噂や体験談を含むため、史実とは分けて楽しんでください。", "access": "現地の道路標識・施設案内・公開時間・立入規制を確認してください。私有地や閉鎖区域への侵入はしないでください。"}];
+const cats=[...new Set(SPOTS.map(x=>x.cat))].sort();
 const state={
  fav:new Set(JSON.parse(localStorage.getItem('shinreiFav')||'[]')),
  visited:new Set(JSON.parse(localStorage.getItem('shinreiVisited')||'[]')),
  notes:JSON.parse(localStorage.getItem('shinreiNotes')||'{}'),
- loc:null, category:'すべて', mode:'all'
+ loc:null,category:'すべて',mode:'all'
 };
-const save=()=>{localStorage.setItem('shinreiFav',JSON.stringify([...state.fav]));localStorage.setItem('shinreiVisited',JSON.stringify([...state.visited]));localStorage.setItem('shinreiNotes',JSON.stringify(state.notes));};
-const dist=(a,b,c,d)=>{const R=6371,rad=x=>x*Math.PI/180,dl=rad(d-b),dp=rad(c-a);const q=Math.sin(dp/2)**2+Math.cos(rad(a))*Math.cos(rad(c))*Math.sin(dl/2)**2;return 2*R*Math.asin(Math.sqrt(q));}
-const badgeClass=s=>s.includes('公開')?'green':(s.includes('外観')||s.includes('公道')||s.includes('遊歩道')||s.includes('公式'))?'amber':'';
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-let map;
+const save=()=>{localStorage.setItem('shinreiFav',JSON.stringify([...state.fav]));localStorage.setItem('shinreiVisited',JSON.stringify([...state.visited]));localStorage.setItem('shinreiNotes',JSON.stringify(state.notes));};
+const dist=(a,b,c,d)=>{const R=6371,rad=x=>x*Math.PI/180,dl=rad(d-b),dp=rad(c-a);const q=Math.sin(dp/2)**2+Math.cos(rad(a))*Math.cos(rad(c))*Math.sin(dl/2)**2;return 2*R*Math.asin(Math.sqrt(q));};
+const badgeClass=s=>s.includes('公開')?'green':(s.includes('外観')||s.includes('公道')||s.includes('遊歩道')||s.includes('公式'))?'amber':'';
 
 function init(){
  document.getElementById('pref').innerHTML='<option value="">すべての都道府県</option>'+PREFS.map(p=>`<option>${p}</option>`).join('');
@@ -115,89 +145,89 @@ function init(){
  document.getElementById('pref').addEventListener('change',renderSearch);
  document.getElementById('cat').addEventListener('change',renderSearch);
  document.getElementById('backBtn').addEventListener('click',()=>showTab('search'));
+ document.getElementById('locBtn').addEventListener('click',requestLocation);
+ document.getElementById('randomBtn').addEventListener('click',()=>{const x=filtered();if(x.length){openDetail(x[Math.floor(Math.random()*x.length)].id);flash();}});
  document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
- initMap(); requestLocation(); renderAll();
+ renderAll(); requestLocation();
 }
-function initMap(){
- const el=document.getElementById('map');
- el.innerHTML='<div class="mapLabel">🗾 心霊スポット分布</div><div id="pinLayer"></div>';
- map={setView:()=>{},invalidateSize:()=>{}};
-}
+
+function flash(){const f=document.getElementById('ghostflash');f.classList.remove('on');void f.offsetWidth;f.classList.add('on');}
 function requestLocation(){
- if(!navigator.geolocation)return;
- navigator.geolocation.getCurrentPosition(pos=>{state.loc={lat:pos.coords.latitude,lng:pos.coords.longitude};renderAll();},()=>renderAll(),{enableHighAccuracy:false,timeout:7000});
+ if(!navigator.geolocation){alert('このブラウザでは位置情報を利用できません。');return;}
+ navigator.geolocation.getCurrentPosition(pos=>{state.loc={lat:pos.coords.latitude,lng:pos.coords.longitude};renderAll();},
+ ()=>renderAll(),{enableHighAccuracy:false,timeout:8000});
 }
 function enrich(s){if(!state.loc)return {...s,d:null,t:null};const d=dist(state.loc.lat,state.loc.lng,s.lat,s.lng);return {...s,d,t:Math.max(5,Math.round(d/35*60))};}
 function filtered(base=SPOTS){
  const q=document.getElementById('q').value.trim().toLowerCase();
  return base.filter(s=>{
    const memo=state.notes[s.id]||'';
-   return (state.category==='すべて'||s.cat===state.category) && (!q||(`${s.name} ${s.pref} ${s.cat} ${memo}`).toLowerCase().includes(q));
+   return (state.category==='すべて'||s.cat===state.category)&&(!q||(`${s.name} ${s.pref} ${s.cat} ${memo}`).toLowerCase().includes(q));
  });
 }
 function renderAll(){
  document.getElementById('spotCount').textContent=SPOTS.length;
  document.getElementById('favCount').textContent=state.fav.size;
  document.getElementById('visitCount').textContent=state.visited.size;
- renderMap(); renderNearby(); renderSearch();
+ renderMap();renderNearby();renderSearch();
+}
+function project(lat,lng){
+ const minLat=24,maxLat=46,minLng=122,maxLng=146;
+ const x=((lng-minLng)/(maxLng-minLng))*72+14;
+ const y=(1-(lat-minLat)/(maxLat-minLat))*78+10;
+ return {x:Math.max(5,Math.min(95,x)),y:Math.max(5,Math.min(95,y))};
 }
 function renderMap(){
- const layer=document.getElementById('pinLayer'); if(!layer)return;
- layer.innerHTML='';
- const minLat=24,maxLat=46,minLng=122,maxLng=146;
- const project=(lat,lng)=>{
-   const x=((lng-minLng)/(maxLng-minLng))*72+14;
-   const y=(1-(lat-minLat)/(maxLat-minLat))*78+10;
-   return {x:Math.max(5,Math.min(95,x)),y:Math.max(5,Math.min(95,y))};
- };
+ const layer=document.getElementById('pinLayer');layer.innerHTML='';
  filtered().forEach(s=>{
    const p=project(s.lat,s.lng),b=document.createElement('button');
-   b.className='pin'; b.style.left=p.x+'%'; b.style.top=p.y+'%';
-   b.type='button'; b.title=s.name; b.setAttribute('aria-label',s.name);
-   b.addEventListener('click',()=>openDetail(s.id)); layer.appendChild(b);
+   b.className='pin';b.style.left=p.x+'%';b.style.top=p.y+'%';b.type='button';b.title=s.name;b.setAttribute('aria-label',s.name);
+   b.addEventListener('click',()=>openDetail(s.id));layer.appendChild(b);
  });
- if(state.loc){
-   const p=project(state.loc.lat,state.loc.lng),me=document.createElement('div');
-   me.className='you-pin'; me.style.left=p.x+'%'; me.style.top=p.y+'%';
-   me.title='現在地'; layer.appendChild(me);
- }
+ if(state.loc){const p=project(state.loc.lat,state.loc.lng),me=document.createElement('div');me.className='you-pin';me.style.left=p.x+'%';me.style.top=p.y+'%';me.title='現在地';layer.appendChild(me);}
 }
 function card(s){
- const e=enrich(s); const skull='☠'.repeat(s.risk)+'·'.repeat(5-s.risk);
+ const e=enrich(s),skull='☠'.repeat(s.risk)+'·'.repeat(5-s.risk),memo=state.notes[s.id]||'';
  return `<article class="card">
  <div class="row"><div><div class="title">${esc(s.name)}</div><div class="meta">📍 ${esc(s.pref)} ・ ${esc(s.cat)}</div></div><span class="badge ${badgeClass(s.status)}">${esc(s.status)}</span></div>
  <div class="meta" style="margin-top:8px">${e.d==null?'現在地未取得':`${e.d.toFixed(1)}km ・ 車で約${e.t}分`}</div>
  <div class="danger">${skull}</div><div class="desc">${esc(s.desc)}</div>
+ ${memo?`<div class="meta">📝 ${esc(memo.slice(0,50))}${memo.length>50?'…':''}</div>`:''}
  <div class="actions"><button class="btn ${state.fav.has(s.id)?'on':''}" data-fav="${s.id}">♥ 行きたい</button><button class="btn visit ${state.visited.has(s.id)?'on':''}" data-visit="${s.id}">✓ 訪問済み</button></div>
  </article>`;
 }
 function bindActions(root){
  root.querySelectorAll('[data-fav]').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();const id=b.dataset.fav;state.fav.has(id)?state.fav.delete(id):state.fav.add(id);save();renderAll();}));
  root.querySelectorAll('[data-visit]').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();const id=b.dataset.visit;state.visited.has(id)?state.visited.delete(id):state.visited.add(id);save();renderAll();}));
- root.querySelectorAll('.card').forEach((el,i)=>{const list=root.dataset.ids?JSON.parse(root.dataset.ids):[];if(list[i])el.addEventListener('click',e=>{if(!e.target.closest('button'))openDetail(list[i]);});});
+ root.querySelectorAll('.card').forEach((el,i)=>{const ids=JSON.parse(root.dataset.ids||'[]');if(ids[i])el.addEventListener('click',e=>{if(!e.target.closest('button'))openDetail(ids[i]);});});
 }
 function renderNearby(){
- let xs=filtered().map(enrich); if(state.loc)xs.sort((a,b)=>a.d-b.d); xs=xs.slice(0,5);
+ let xs=filtered().map(enrich);if(state.loc)xs.sort((a,b)=>a.d-b.d);xs=xs.slice(0,6);
  const el=document.getElementById('nearby');el.dataset.ids=JSON.stringify(xs.map(x=>x.id));el.innerHTML=xs.length?xs.map(card).join(''):'<div class="empty">該当スポットがありません</div>';bindActions(el);
 }
 function renderSearch(){
- let xs=filtered();
- const p=document.getElementById('pref').value,c=document.getElementById('cat').value;
+ let xs=filtered(),p=document.getElementById('pref').value,c=document.getElementById('cat').value;
  if(p)xs=xs.filter(x=>x.pref===p);if(c)xs=xs.filter(x=>x.cat===c);
  if(state.mode==='fav')xs=xs.filter(x=>state.fav.has(x.id));if(state.mode==='visited')xs=xs.filter(x=>state.visited.has(x.id));
- const el=document.getElementById('results');el.dataset.ids=JSON.stringify(xs.map(x=>x.id));el.innerHTML=xs.length?xs.map(card).join(''):'<div class="empty">この条件の掲載データはまだありません。</div>';bindActions(el);
+ const el=document.getElementById('results');el.dataset.ids=JSON.stringify(xs.map(x=>x.id));el.innerHTML=xs.length?xs.map(card).join(''):'<div class="empty">この条件の掲載データはありません。</div>';bindActions(el);
 }
 function openDetail(id){
  const s=SPOTS.find(x=>x.id===id),e=enrich(s);showTab('detail');
  const note=state.notes[s.id]||'';
- document.getElementById('detailBody').innerHTML=`<div class="detailHero"><span>◉</span></div><h1>${esc(s.name)}</h1>
+ document.getElementById('detailBody').innerHTML=`
+ <div class="detailHero"><span>◉</span></div><h1>${esc(s.name)}</h1>
  <div class="meta">${esc(s.pref)} ・ ${esc(s.cat)}</div>
  <p><span class="badge ${badgeClass(s.status)}">${esc(s.status)}</span> <span class="danger">${'☠'.repeat(s.risk)}</span></p>
- <div class="meta">${e.d==null?'現在地未取得':`現在地から ${e.d.toFixed(1)}km ・ 車で約${e.t}分`}</div>
+ <div class="infoGrid">
+   <div class="infoBox"><b>現在地から</b>${e.d==null?'未取得':`${e.d.toFixed(1)}km`}</div>
+   <div class="infoBox"><b>概算移動時間</b>${e.t==null?'未取得':`車で約${e.t}分`}</div>
+ </div>
  <h2>スポット概要</h2><p class="desc">${esc(s.desc)}</p>
+ <h2>伝承・歴史</h2><p class="desc">${esc(s.history)}</p>
  <div class="actions"><button class="btn ${state.fav.has(s.id)?'on':''}" id="dfav">♥ 行きたい</button><button class="btn visit ${state.visited.has(s.id)?'on':''}" id="dvisit">✓ 訪問済み</button></div>
- <h2>自分用メモ</h2><div class="memo"><textarea id="memo" placeholder="感想、注意点、次回確認したいこと">${esc(note)}</textarea></div>
- <h2>アクセス</h2><p class="desc">地図上の位置は参考情報です。現地の道路標識・公開範囲・施設管理者の案内を優先してください。</p>`;
+ <h2>自分用メモ</h2><div class="memo"><textarea id="memo" placeholder="感想・注意点・次回確認したいこと">${esc(note)}</textarea></div>
+ <h2>現地写真</h2><div class="gallery"><div class="ph">🌫️</div><div class="ph">🚧</div><div class="ph">🌲</div></div>
+ <h2>アクセス・安全</h2><p class="desc">${esc(s.access)}</p>`;
  document.getElementById('dfav').onclick=()=>{state.fav.has(id)?state.fav.delete(id):state.fav.add(id);save();openDetail(id);renderAll();};
  document.getElementById('dvisit').onclick=()=>{state.visited.has(id)?state.visited.delete(id):state.visited.add(id);save();openDetail(id);renderAll();};
  document.getElementById('memo').addEventListener('input',e=>{state.notes[id]=e.target.value;save();});
@@ -207,15 +237,20 @@ function showTab(tab){
  document.getElementById('homeView').style.display=tab==='home'?'block':'none';
  document.getElementById('searchView').style.display=['search','fav','visited','settings'].includes(tab)?'block':'none';
  document.getElementById('detailView').classList.toggle('show',tab==='detail');
- if(tab==='fav'){state.mode='fav';renderSearch()}else if(tab==='visited'){state.mode='visited';renderSearch()}else if(tab==='search'){state.mode='all';renderSearch()}else if(tab==='settings'){state.mode='all';document.getElementById('results').innerHTML='<div class="card"><div class="title">設定</div><p class="desc">データはこの端末のSafari内に保存されます。ホーム画面に追加するとアプリ風に使えます。</p></div>';}
- if(tab==='home'&&map&&map.invalidateSize)setTimeout(()=>map.invalidateSize(),100);
+ if(tab==='fav'){state.mode='fav';document.getElementById('listTitle').textContent='行きたい';renderSearch();}
+ else if(tab==='visited'){state.mode='visited';document.getElementById('listTitle').textContent='訪問済み';renderSearch();}
+ else if(tab==='search'){state.mode='all';document.getElementById('listTitle').textContent='全国データ検索';renderSearch();}
+ else if(tab==='settings'){
+   state.mode='all';document.getElementById('listTitle').textContent='設定';
+   document.getElementById('results').innerHTML=`<div class="settingsBox"><h3>データ保存</h3><p class="desc">行きたい・訪問済み・メモはこの端末のSafari内に保存されます。</p></div>
+   <div class="settingsBox"><h3>ホーム画面に追加</h3><p class="desc">Safariの共有ボタン →「ホーム画面に追加」でアプリのように起動できます。</p></div>
+   <div class="settingsBox"><h3>安全について</h3><p class="desc">立入禁止・私有地・鉄道施設への侵入はしないでください。掲載情報より現地の最新表示を優先してください。</p></div>`;
+ }
 }
 init();
 </script>
 <script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
 </script>
 </body>
 </html>
