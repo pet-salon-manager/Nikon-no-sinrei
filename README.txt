@@ -1,12 +1,16 @@
-日本心霊スポット図鑑 v2（iPhone安定版）
-外部Leaflet依存をなくし、地図表示でJavaScript全体が停止する問題を修正しました。
+日本心霊スポット図鑑 v3
+========================
+v2の検索処理にあったJavaScript構文エラーを修正しました。
 
-GitHub更新:
-1. ZIPを展開
-2. index.html / manifest.webmanifest / sw.js の3ファイルを既存リポジトリへ上書き
-3. Commit changes
-4. GitHub PagesのURLをSafariで再読み込み
-5. 古い表示が残る場合はSafariでページを閉じて開き直すか、履歴/サイトデータを更新
+GitHubで上書きするファイル:
+- index.html
+- manifest.webmanifest
+- sw.js
 
-位置情報:
-GitHub PagesのHTTPS URLではiPhoneの位置情報許可後に利用できます。
+反映後:
+1. GitHubで Commit changes
+2. 1〜2分待つ
+3. Safariで公開URLを開く
+4. 古い画面が残る場合はSafariの再読み込みを長押し、または一度タブを閉じて開き直す
+
+正常なら「掲載 27」と表示され、地図に赤いピンが出ます。
