@@ -1,15 +1,12 @@
-日本心霊スポット図鑑
-==================
-iPhone Safari向けの単一ページWebアプリです。
+日本心霊スポット図鑑 v2（iPhone安定版）
+外部Leaflet依存をなくし、地図表示でJavaScript全体が停止する問題を修正しました。
 
-使い方:
-1. このフォルダ一式を GitHub Pages / Netlify 等のHTTPSホスティングへアップロード
-2. Safariで公開URLを開く
-3. 位置情報を許可すると現在地から近い順・距離・概算車移動時間を表示
-4. Safariの共有 → 「ホーム画面に追加」でアプリ風に利用
+GitHub更新:
+1. ZIPを展開
+2. index.html / manifest.webmanifest / sw.js の3ファイルを既存リポジトリへ上書き
+3. Commit changes
+4. GitHub PagesのURLをSafariで再読み込み
+5. 古い表示が残る場合はSafariでページを閉じて開き直すか、履歴/サイトデータを更新
 
-注意:
-- 位置情報はHTTPS環境でのみ安定して動作します。
-- 地図はOpenStreetMap/Leafletを利用するためオンライン接続が必要です。
-- 掲載スポットは初期データです。公開可否や規制は変わるため、現地表示・公式情報を最優先してください。
-- 私有地、線路、閉鎖施設、立入禁止区域への侵入を目的とする機能はありません。
+位置情報:
+GitHub PagesのHTTPS URLではiPhoneの位置情報許可後に利用できます。
