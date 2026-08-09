@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="心霊図鑑">
 <link rel="manifest" href="manifest.webmanifest">
-<title>日本心霊スポット図鑑 v4 本番版</title>
+<title>日本心霊スポット図鑑 v5 本番版</title>
 <style>
 :root{--bg:#050505;--panel:#101010;--panel2:#161313;--line:#3a2220;--red:#e12c20;--red2:#7a0e09;--text:#f2ece8;--muted:#a99e98;--green:#4fb668;--amber:#db922a}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -29,7 +29,7 @@ header{padding:20px 16px 10px;position:sticky;top:0;z-index:50;background:linear
 .stat{background:#101010;border:1px solid #382625;border-radius:13px;padding:10px;text-align:center}.stat span{font-size:12px;color:#a99f9a}.stat b{display:block;font-size:22px;margin-top:3px}
 .hero{margin:0 16px 12px;border:1px solid #3a201e;border-radius:17px;overflow:hidden;background:#080808}
 .map{height:330px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 52% 44%,#17201e 0,#0c1110 36%,#080909 67%,#040404 100%)}
-.map:before{content:"日本";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:serif;font-size:78px;letter-spacing:.35em;color:#ffffff0b;transform:rotate(-10deg)}
+.map:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,#13201d33,transparent 62%);pointer-events:none}
 .map:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,transparent 0 44%,#0008 78%,#000 100%);pointer-events:none}
 .mapLabel{position:absolute;left:12px;top:12px;z-index:9;background:#080808d9;border:1px solid #542824;border-radius:11px;padding:8px 10px;font-size:12px}
 .mapControls{position:absolute;right:12px;top:12px;z-index:10;display:grid;gap:8px}
@@ -63,6 +63,24 @@ nav button{background:none;border:0;color:#8f8782;padding:10px 2px;font-size:11p
 .settingsBox h3{margin:0 0 8px;font-family:serif}.ghostflash{position:fixed;inset:0;pointer-events:none;z-index:999;opacity:0;background:radial-gradient(circle,#ffffff18,#7a000022 35%,#0000 70%)}
 .ghostflash.on{animation:flash .45s ease}@keyframes flash{0%{opacity:0}45%{opacity:.9}100%{opacity:0}}
 @media(max-width:420px){.brand{font-size:24px}.map{height:300px}.filters,.infoGrid{grid-template-columns:1fr}}
+
+.jpmap-svg{position:absolute;inset:18px 28px 22px 28px;width:calc(100% - 56px);height:calc(100% - 40px);z-index:1;filter:drop-shadow(0 0 8px #6d130f88)}
+.jp-land{fill:#272b29;stroke:#8b8f8a;stroke-width:1.25}
+.jp-outline-glow{fill:none;stroke:#b8271e55;stroke-width:4}
+.pin,.you-pin{z-index:6}
+.routeGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.routeCard{background:#101010;border:1px solid #3b2926;border-radius:12px;padding:10px;text-align:center}
+.routeCard b{display:block;font-size:14px;margin:4px 0}.routeCard span{font-size:12px;color:#aaa09a}
+.routeBtn{width:100%;margin-top:7px;border:1px solid #7f271f;background:#24100e;color:#ffddd8;border-radius:9px;padding:8px 4px;font-size:12px}
+.photoControls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.photoBtn{display:block;text-align:center;border:1px solid #6e2923;background:#21100f;color:#fff;border-radius:11px;padding:11px;font-size:14px}
+.photoBtn input{display:none}.photoGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.photoItem{position:relative;aspect-ratio:1/1;border:1px solid #3d2926;border-radius:11px;overflow:hidden;background:#0c0c0c}
+.photoItem img{width:100%;height:100%;object-fit:cover;display:block}
+.photoDelete{position:absolute;right:5px;top:5px;border:1px solid #70221d;background:#0a0a0acc;color:#fff;border-radius:999px;width:28px;height:28px;font-size:14px}
+.photoEmpty{grid-column:1/-1;padding:18px;text-align:center;border:1px dashed #3a2926;border-radius:11px;color:#998d87;font-size:13px}
+@media(max-width:420px){.routeGrid{grid-template-columns:1fr}.photoGrid{grid-template-columns:repeat(2,1fr)}}
+
 </style>
 </head>
 <body>
@@ -70,7 +88,7 @@ nav button{background:none;border:0;color:#8f8782;padding:10px 2px;font-size:11p
 <div class="app">
 <header>
   <div class="brand">日本心霊スポット図鑑</div>
-  <div class="sub">全国47都道府県対応・怖くて実用的なフィールドガイド <span class="version">v4 本番版</span></div>
+  <div class="sub">全国47都道府県対応・怖くて実用的なフィールドガイド <span class="version">v5 本番版</span></div>
   <div class="search"><input id="q" placeholder="スポット名・都道府県・メモを検索"></div>
   <div class="chips" id="chips"></div>
 </header>
@@ -84,7 +102,26 @@ nav button{background:none;border:0;color:#8f8782;padding:10px 2px;font-size:11p
 
   <div class="hero">
     <div id="map" class="map">
-      <div class="mapLabel">🗾 心霊スポット分布</div>
+      <div class="mapLabel">🗾 日本全国・心霊スポット分布</div>
+<svg class="jpmap-svg" viewBox="0 0 420 300" role="img" aria-label="日本列島の地図">
+  <g transform="rotate(-8 210 150)">
+    <!-- Hokkaido -->
+    <path class="jp-outline-glow" d="M302 30 L330 21 L355 34 L347 49 L361 62 L342 71 L323 63 L309 75 L293 61 L281 65 L286 48 Z"/>
+    <path class="jp-land" d="M302 30 L330 21 L355 34 L347 49 L361 62 L342 71 L323 63 L309 75 L293 61 L281 65 L286 48 Z"/>
+    <!-- Honshu -->
+    <path class="jp-outline-glow" d="M292 75 C280 84,282 94,270 101 C258 108,252 119,243 127 C231 137,218 141,209 151 C198 162,189 172,176 179 C160 187,145 189,132 199 C118 210,102 216,88 221 L79 211 C94 203,107 195,120 185 C132 176,145 169,158 163 C172 156,185 147,196 137 C207 127,216 117,229 109 C244 100,252 89,268 82 C278 77,284 73,292 75 Z"/>
+    <path class="jp-land" d="M292 75 C280 84,282 94,270 101 C258 108,252 119,243 127 C231 137,218 141,209 151 C198 162,189 172,176 179 C160 187,145 189,132 199 C118 210,102 216,88 221 L79 211 C94 203,107 195,120 185 C132 176,145 169,158 163 C172 156,185 147,196 137 C207 127,216 117,229 109 C244 100,252 89,268 82 C278 77,284 73,292 75 Z"/>
+    <!-- Shikoku -->
+    <path class="jp-outline-glow" d="M133 205 L162 199 L176 207 L164 216 L137 218 L123 212 Z"/>
+    <path class="jp-land" d="M133 205 L162 199 L176 207 L164 216 L137 218 L123 212 Z"/>
+    <!-- Kyushu -->
+    <path class="jp-outline-glow" d="M94 211 L112 220 L109 238 L97 252 L87 269 L72 260 L69 244 L57 233 L66 218 L80 215 Z"/>
+    <path class="jp-land" d="M94 211 L112 220 L109 238 L97 252 L87 269 L72 260 L69 244 L57 233 L66 218 L80 215 Z"/>
+    <!-- Okinawa chain -->
+    <circle class="jp-land" cx="43" cy="271" r="4"/><circle class="jp-land" cx="30" cy="281" r="3"/><circle class="jp-land" cx="18" cy="288" r="2.5"/>
+  </g>
+</svg>
+
       <div class="mapControls"><button class="mapBtn" id="locBtn">◎ 現在地</button><button class="mapBtn" id="randomBtn">☠ ランダム</button></div>
       <div id="pinLayer"></div>
     </div>
@@ -173,9 +210,9 @@ function renderAll(){
 }
 function project(lat,lng){
  const minLat=24,maxLat=46,minLng=122,maxLng=146;
- const x=((lng-minLng)/(maxLng-minLng))*72+14;
- const y=(1-(lat-minLat)/(maxLat-minLat))*78+10;
- return {x:Math.max(5,Math.min(95,x)),y:Math.max(5,Math.min(95,y))};
+ const x=((lng-minLng)/(maxLng-minLng))*82+9;
+ const y=(1-(lat-minLat)/(maxLat-minLat))*84+8;
+ return {x:Math.max(4,Math.min(96,x)),y:Math.max(4,Math.min(96,y))};
 }
 function renderMap(){
  const layer=document.getElementById('pinLayer');layer.innerHTML='';
@@ -186,11 +223,27 @@ function renderMap(){
  });
  if(state.loc){const p=project(state.loc.lat,state.loc.lng),me=document.createElement('div');me.className='you-pin';me.style.left=p.x+'%';me.style.top=p.y+'%';me.title='現在地';layer.appendChild(me);}
 }
+
+function travelInfo(s){
+ const e=enrich(s);
+ if(e.d==null)return {drive:'現在地未取得',transit:'現在地未取得',walk:'現在地未取得'};
+ const d=e.d;
+ const drive=Math.max(5,Math.round(d/35*60));
+ const transit=Math.max(10,Math.round(d/28*60+12));
+ const walk=Math.max(10,Math.round(d/4.5*60));
+ const fmt=m=>m>=60?`${Math.floor(m/60)}時間${m%60?m%60+'分':''}`:`${m}分`;
+ return {drive:fmt(drive),transit:fmt(transit),walk:fmt(walk)};
+}
+function appleRouteUrl(s,mode){
+ const flag=mode==='drive'?'d':mode==='transit'?'r':'w';
+ return `https://maps.apple.com/?daddr=${encodeURIComponent(s.lat+','+s.lng)}&dirflg=${flag}`;
+}
+
 function card(s){
  const e=enrich(s),skull='☠'.repeat(s.risk)+'·'.repeat(5-s.risk),memo=state.notes[s.id]||'';
  return `<article class="card">
  <div class="row"><div><div class="title">${esc(s.name)}</div><div class="meta">📍 ${esc(s.pref)} ・ ${esc(s.cat)}</div></div><span class="badge ${badgeClass(s.status)}">${esc(s.status)}</span></div>
- <div class="meta" style="margin-top:8px">${e.d==null?'現在地未取得':`${e.d.toFixed(1)}km ・ 車で約${e.t}分`}</div>
+ <div class="meta" style="margin-top:8px">${e.d==null?'現在地未取得':`${e.d.toFixed(1)}km ・ 🚗 約${travelInfo(s).drive} ・ 🚃 約${travelInfo(s).transit}`}</div>
  <div class="danger">${skull}</div><div class="desc">${esc(s.desc)}</div>
  ${memo?`<div class="meta">📝 ${esc(memo.slice(0,50))}${memo.length>50?'…':''}</div>`:''}
  <div class="actions"><button class="btn ${state.fav.has(s.id)?'on':''}" data-fav="${s.id}">♥ 行きたい</button><button class="btn visit ${state.visited.has(s.id)?'on':''}" data-visit="${s.id}">✓ 訪問済み</button></div>
@@ -220,18 +273,84 @@ function openDetail(id){
  <p><span class="badge ${badgeClass(s.status)}">${esc(s.status)}</span> <span class="danger">${'☠'.repeat(s.risk)}</span></p>
  <div class="infoGrid">
    <div class="infoBox"><b>現在地から</b>${e.d==null?'未取得':`${e.d.toFixed(1)}km`}</div>
-   <div class="infoBox"><b>概算移動時間</b>${e.t==null?'未取得':`車で約${e.t}分`}</div>
+   <div class="infoBox"><b>位置</b>${esc(s.pref)}</div>
  </div>
+ <h2>現在地からの移動方法</h2>
+ <div class="routeGrid">
+   <div class="routeCard">🚗<b>車</b><span>${travelInfo(s).drive}</span><button class="routeBtn" data-route="drive">Appleマップでルート</button></div>
+   <div class="routeCard">🚃<b>公共交通</b><span>${travelInfo(s).transit}</span><button class="routeBtn" data-route="transit">Appleマップでルート</button></div>
+   <div class="routeCard">🚶<b>徒歩</b><span>${travelInfo(s).walk}</span><button class="routeBtn" data-route="walk">Appleマップでルート</button></div>
+ </div>
+ <p class="meta">※時間は直線距離からの概算です。実際の所要時間・経路はAppleマップで確認してください。</p>
  <h2>スポット概要</h2><p class="desc">${esc(s.desc)}</p>
  <h2>伝承・歴史</h2><p class="desc">${esc(s.history)}</p>
  <div class="actions"><button class="btn ${state.fav.has(s.id)?'on':''}" id="dfav">♥ 行きたい</button><button class="btn visit ${state.visited.has(s.id)?'on':''}" id="dvisit">✓ 訪問済み</button></div>
  <h2>自分用メモ</h2><div class="memo"><textarea id="memo" placeholder="感想・注意点・次回確認したいこと">${esc(note)}</textarea></div>
- <h2>現地写真</h2><div class="gallery"><div class="ph">🌫️</div><div class="ph">🚧</div><div class="ph">🌲</div></div>
+ <h2>現地写真</h2>
+ <div class="photoControls">
+   <label class="photoBtn">📷 写真を撮る<input id="cameraInput" type="file" accept="image/*" capture="environment"></label>
+   <label class="photoBtn">🖼️ 写真を選ぶ<input id="libraryInput" type="file" accept="image/*" multiple></label>
+ </div>
+ <div id="photoGrid" class="photoGrid"><div class="photoEmpty">まだ写真はありません</div></div>
+ <p class="meta">写真はこのiPhone内に保存されます。</p>
  <h2>アクセス・安全</h2><p class="desc">${esc(s.access)}</p>`;
  document.getElementById('dfav').onclick=()=>{state.fav.has(id)?state.fav.delete(id):state.fav.add(id);save();openDetail(id);renderAll();};
  document.getElementById('dvisit').onclick=()=>{state.visited.has(id)?state.visited.delete(id):state.visited.add(id);save();openDetail(id);renderAll();};
  document.getElementById('memo').addEventListener('input',e=>{state.notes[id]=e.target.value;save();});
+ document.querySelectorAll('[data-route]').forEach(b=>b.addEventListener('click',()=>{window.location.href=appleRouteUrl(s,b.dataset.route);}));
+ document.getElementById('cameraInput').addEventListener('change',async e=>{await addPhotos(id,[...e.target.files]);renderPhotos(id);e.target.value='';});
+ document.getElementById('libraryInput').addEventListener('change',async e=>{await addPhotos(id,[...e.target.files]);renderPhotos(id);e.target.value='';});
+ renderPhotos(id);
 }
+
+const photoDB=(()=>{
+ let dbp;
+ function db(){
+  if(!dbp)dbp=new Promise((resolve,reject)=>{
+   const r=indexedDB.open('shinreiPhotos',1);
+   r.onupgradeneeded=()=>{const d=r.result;if(!d.objectStoreNames.contains('photos')){const s=d.createObjectStore('photos',{keyPath:'key'});s.createIndex('spot','spot',{unique:false});}};
+   r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);
+  });
+  return dbp;
+ }
+ return {
+  async put(o){const d=await db();return new Promise((res,rej)=>{const t=d.transaction('photos','readwrite');t.objectStore('photos').put(o);t.oncomplete=res;t.onerror=()=>rej(t.error);});},
+  async list(spot){const d=await db();return new Promise((res,rej)=>{const t=d.transaction('photos');const r=t.objectStore('photos').index('spot').getAll(spot);r.onsuccess=()=>res(r.result||[]);r.onerror=()=>rej(r.error);});},
+  async del(key){const d=await db();return new Promise((res,rej)=>{const t=d.transaction('photos','readwrite');t.objectStore('photos').delete(key);t.oncomplete=res;t.onerror=()=>rej(t.error);});}
+ };
+})();
+async function resizeImage(file){
+ return new Promise((resolve,reject)=>{
+  const img=new Image(),url=URL.createObjectURL(file);
+  img.onload=()=>{
+   const max=1280,scale=Math.min(1,max/Math.max(img.width,img.height));
+   const c=document.createElement('canvas');c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);
+   c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+   c.toBlob(blob=>{URL.revokeObjectURL(url);blob?resolve(blob):reject(new Error('画像変換に失敗'));},'image/jpeg',0.82);
+  };
+  img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('画像を読み込めません'));};img.src=url;
+ });
+}
+async function addPhotos(spot,files){
+ for(const file of files.slice(0,12)){
+  if(!file.type.startsWith('image/'))continue;
+  try{const blob=await resizeImage(file);await photoDB.put({key:spot+'_'+Date.now()+'_'+Math.random().toString(36).slice(2),spot,blob,created:Date.now()});}catch(e){console.error(e);}
+ }
+}
+async function renderPhotos(spot){
+ const grid=document.getElementById('photoGrid');if(!grid)return;
+ const items=(await photoDB.list(spot)).sort((a,b)=>b.created-a.created);
+ if(!items.length){grid.innerHTML='<div class="photoEmpty">まだ写真はありません。現地で撮った写真や過去の写真を追加できます。</div>';return;}
+ grid.innerHTML='';
+ for(const item of items){
+  const box=document.createElement('div');box.className='photoItem';
+  const img=document.createElement('img');const url=URL.createObjectURL(item.blob);img.src=url;img.alt='記録写真';img.onload=()=>URL.revokeObjectURL(url);
+  const del=document.createElement('button');del.className='photoDelete';del.type='button';del.textContent='×';del.setAttribute('aria-label','写真を削除');
+  del.addEventListener('click',async()=>{if(confirm('この写真を削除しますか？')){await photoDB.del(item.key);renderPhotos(spot);}});
+  box.append(img,del);grid.appendChild(box);
+ }
+}
+
 function showTab(tab){
  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));
  document.getElementById('homeView').style.display=tab==='home'?'block':'none';
