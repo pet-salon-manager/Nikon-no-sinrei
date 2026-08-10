@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="心霊図鑑">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
-<title>日本心霊スポット図鑑 v10.4 山梨・長野徹底強化版</title>
+<title>日本心霊スポット図鑑 v10.5 特集欄なし版</title>
 <style>
 :root{--bg:#050505;--panel:#101010;--panel2:#161313;--line:#3a2220;--red:#e12c20;--red2:#7a0e09;--text:#f2ece8;--muted:#a99e98;--green:#4fb668;--amber:#db922a}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -86,7 +86,7 @@ nav button{background:none;border:0;color:#8f8782;padding:10px 2px;font-size:11p
 <div class="app">
 <header>
   <div class="brand">日本心霊スポット図鑑</div>
-  <div class="sub">全国47都道府県対応・怖くて実用的なフィールドガイド <span class="version">v10.4 山梨・長野徹底強化版</span></div>
+  <div class="sub">全国47都道府県対応・怖くて実用的なフィールドガイド <span class="version">v10.5 特集欄なし版</span></div>
   <div class="search"><input id="q" placeholder="スポット名・都道府県・メモを検索"></div>
   <div class="chips" id="chips"></div>
 </header>
@@ -114,14 +114,7 @@ nav button{background:none;border:0;color:#8f8782;padding:10px 2px;font-size:11p
 
   <div class="warning">⚠️ 私有地・閉鎖施設・線路・立入禁止区域には入らないでください。心霊情報は噂や体験談を含み、史実とは分けて楽しむ設計です。</div>
 
-  <div class="section"><h2>🗻 静岡県 徹底特集</h2><p class="muted">伊豆・富士・静岡中部・遠州まで重点強化。</p><button class="mapBtn" id="shizuokaBtn" style="position:static;width:100%;margin-top:8px">静岡県のスポットだけ見る</button></div><div class="section">
-  <h2>🗻 山梨・長野 徹底特集</h2>
-  <p class="muted">富士北麓・甲州街道・木曽路・諏訪・戸隠・松代まで重点強化しました。</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
-   <button class="mapBtn" id="yamanashiBtn" style="position:static;width:100%">山梨県だけ見る</button>
-   <button class="mapBtn" id="naganoBtn" style="position:static;width:100%">長野県だけ見る</button>
-  </div>
- </div>
+  
 <div class="section"><h2>現在地から近いスポット</h2><div id="nearby" class="cards"></div></div>
   <div class="section"><h2>都道府県別ランキング</h2><div id="rankings" class="rankList"></div></div>
 </div>
@@ -193,9 +186,6 @@ function init(){
  document.getElementById('backBtn').addEventListener('click',()=>showTab('search'));
  document.getElementById('locBtn').addEventListener('click',requestLocation);
  document.getElementById('japanBtn').addEventListener('click',()=>{if(osmMap)osmMap.fitBounds([[24,122],[46,146]],{padding:[10,10]});});
- document.getElementById('shizuokaBtn')?.addEventListener('click',()=>{document.getElementById('pref').value='静岡県';state.mode='all';showTab('search');renderSearch();});
- document.getElementById('yamanashiBtn')?.addEventListener('click',()=>{document.getElementById('pref').value='山梨県';state.mode='all';showTab('search');renderSearch();});
-document.getElementById('naganoBtn')?.addEventListener('click',()=>{document.getElementById('pref').value='長野県';state.mode='all';showTab('search');renderSearch();});
  document.getElementById('randomBtn').addEventListener('click',()=>{const x=filtered();if(x.length){openDetail(x[Math.floor(Math.random()*x.length)].id);flash();}});
  document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
  initOSM(); renderAll(); requestLocation();
